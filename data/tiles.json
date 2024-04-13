@@ -1,0 +1,7 @@
+{
+    "ground": {
+        "name": "ground",
+        "sprite": "assets/Ground.png",
+        "layer": 1
+    }
+}
