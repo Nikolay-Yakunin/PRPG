@@ -1,39 +1,32 @@
 import pygame
-import SplitesSheet
-import Character
+from logic.utils import update_screen, load_player, handle_events
+from config import FPS
 
 
 class Game:
-    def __init__(self):
-        self.running = True
-        self.clock = pygame.time.Clock()
-        self.screen = pygame.display.set_mode((1152, 600))
-        self.background = pygame.image.load('assets/Interface/FreePlatformerNA/Mockup.png')
-        self.player_splitsheet = SplitesSheet('assets/lpc_entry/png/hurt/BODY_male.png').get_image(0, 0, 64, 64)
-
-        self.player = Character(self.player_splitsheet, 0, 0) 
+    def __init__(self, screen, running, clock, terrain, player):
+        self.screen = screen
+        self.running = running
+        self.clock = clock
+        self.terrain = terrain
+        self.player = player
 
     def start(self):
 
         # Основной игровой цикл
+        all_sprites, block_sprites = self.terrain
+        player = self.player
+        clock = pygame.time.Clock()
+
         while self.running:
-            # Обновление экрана
-            self.screen.fill((66, 132, 245))
-            self.screen.blit(self.background, (0, 0))
-            self.screen.blit(self.player_splitsheet, (0,0))
-
-            pygame.display.update()
-
-            # Пауза
-            self.clock.tick(24)
-            # Проверка событий
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    self.running = False
-                elif event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_ESCAPE:
-                        self.running = False
-            self.screen.fill((66, 132, 245))
-            self.screen.blit(self.background, (0, 0))
-            self.screen.blit(self.player_splitsheet, (0,0))
-            pygame.display.update()
+            self.running = handle_events()
+            keys = pygame.key.get_pressed()
+            directional_mapping = {
+                pygame.K_LEFT: (-1, 0), pygame.K_RIGHT: (1, 0),
+                pygame.K_UP: (0, -1), pygame.K_DOWN: (0, 1)
+            }
+            for key, direction in directional_mapping.items():
+                if keys[key]:
+                    player.move(direction, block_sprites)
+            update_screen(self.screen, all_sprites, player) 
+            clock.tick(FPS)
