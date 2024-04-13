@@ -1,12 +1,8 @@
 import pygame
-from logic.SplitesSheet import SplitesSheet
-from logic.Player import Player
-from logic.Terrain import Block, Ground
 from logic.Game import Game
-from logic.utils import update_screen, create_terrain,load_music, load_player, handle_events
+from logic.utils import create_terrain,load_music, load_player
 from model.Menu.Main_menu import main_menu
-from config import WIN_HEIGHT, WIN_WIDTH, FPS, tilemap
-
+from config import WIN_HEIGHT, WIN_WIDTH, tilemap
 
 # Константы
 SCREEN_SIZE = (WIN_HEIGHT, WIN_WIDTH)

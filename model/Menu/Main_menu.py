@@ -1,6 +1,6 @@
 import pygame
 from logic.utils import mouse_handler
-from config import WHITE, BLACK
+from config import WHITE, BLACK, BACKGROUND_COLOR
 
 class Button:
     def __init__(self, text, width, height, pos, elevation):
@@ -51,7 +51,7 @@ class Button:
 
 def main_menu(screen, game):
     background = pygame.Surface(screen.get_size())
-    background.fill(BLACK)
+    background.fill(BACKGROUND_COLOR)
     
     button_start = Button('Start Game', 200, 40, (100, 150), 5)
     button_settings = Button('Settings', 200, 40, (100, 250), 5)

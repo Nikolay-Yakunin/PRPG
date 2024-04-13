@@ -3,6 +3,7 @@ from logic.Player import Player
 from logic.SplitesSheet import SplitesSheet
 from logic.Terrain import Block, Ground
 from config import BACKGROUND_COLOR
+
 def mouse_handler():
     mouse_pressed = pygame.mouse.get_pressed()
     mouse_pos = pygame.mouse.get_pos()
