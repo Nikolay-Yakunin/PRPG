@@ -1,5 +1,5 @@
 import pygame
-from logic.utils import update_screen, load_player, handle_events
+from logic.utils import update_screen, handle_events
 from config import FPS
 
 

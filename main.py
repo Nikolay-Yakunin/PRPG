@@ -13,8 +13,6 @@ ASSETS = {
     "ground": 'assets/Ground.png'
 }
 
-# TODO: Класс для анимаций
-
 # Main
 def main():
     pygame.init()

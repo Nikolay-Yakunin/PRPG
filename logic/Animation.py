@@ -1,7 +1,7 @@
 from logic.SplitesSheet import SplitesSheet
 
 class Animation:
-    def __init__(self, spritesheet, y, lenght ):
+    def __init__(self, spritesheet: str, y: int, lenght: int ):
         self.animation = [SplitesSheet(spritesheet).get_image(frame * 64, y, 64, 64) for frame in range(lenght)]
         self.image_index = 0
         self.animation_speed = 0.2 # Скорость анимации, можно регулировать
