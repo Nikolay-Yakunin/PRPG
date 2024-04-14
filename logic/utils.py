@@ -42,7 +42,7 @@ def load_music(music_file):
     pygame.mixer.music.play(-1, 0.0)
 
 def load_player(assets, x, y):
-    player = Player(SplitesSheet(assets), x, y)
+    player = Player(assets, x, y)
 
     return player
 
